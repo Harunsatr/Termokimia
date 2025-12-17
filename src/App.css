@@ -1,0 +1,468 @@
+/* App specific styles */
+#root {
+  min-height: 100vh;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  font: inherit;
+}
+
+/* ===== Base Styles ===== */
+* {
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Colors */
+  --bg-primary: #0f0a1e;
+  --bg-secondary: #1a1333;
+  --bg-card: #1e1a2e;
+  --bg-card-hover: #252040;
+  --accent-pink: #ff6b9d;
+  --accent-orange: #ffa64d;
+  --accent-purple: #a855f7;
+  --accent-blue: #60a5fa;
+  --accent-green: #4ade80;
+  --accent-yellow: #fbbf24;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0b0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== Custom Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.95), rgba(99, 102, 241, 0.95));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, rgba(255, 107, 157, 0.95), rgba(255, 166, 77, 0.95));
+}
+
+/* ===== Gradient Text ===== */
+.gradient-title {
+  background: linear-gradient(135deg, #ff6b9d 0%, #ffa64d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== Logo / Title Treatment ===== */
+.logo-title {
+  background: linear-gradient(135deg, #ff6b9d 0%, #ffa64d 40%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+  text-shadow:
+    0 0 18px rgba(255, 107, 157, 0.14),
+    0 0 26px rgba(168, 85, 247, 0.10);
+}
+
+.logo-subtitle {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.logo-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+}
+
+/* ===== Hero glow helpers ===== */
+.hero-glow {
+  position: relative;
+}
+
+.hero-glow::before {
+  content: "";
+  position: absolute;
+  inset: -24px;
+  background:
+    radial-gradient(600px 300px at 20% 20%, rgba(99, 102, 241, 0.18), transparent 60%),
+    radial-gradient(520px 260px at 75% 25%, rgba(168, 85, 247, 0.16), transparent 55%),
+    radial-gradient(420px 220px at 50% 90%, rgba(255, 107, 157, 0.12), transparent 60%);
+  filter: blur(2px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-glow > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Speech bubble ===== */
+.speech-bubble {
+  position: relative;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 20px;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.speech-bubble::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 24px;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  transform: rotate(45deg);
+}
+
+@media (max-width: 767px) {
+  .speech-bubble::before {
+    left: 24px;
+    top: auto;
+    bottom: -10px;
+    border-left: none;
+    border-top: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.14);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  }
+}
+
+.speech-title {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.speech-text {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* ===== Cards variants ===== */
+.stat-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+}
+
+.mission-card {
+  background:
+    radial-gradient(120% 120% at 30% 20%, rgba(255, 255, 255, 0.08), transparent 60%),
+    linear-gradient(145deg, #1e1a2e, #252040);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 16px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.mission-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(168, 85, 247, 0.35);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.30),
+    0 0 22px rgba(168, 85, 247, 0.16);
+}
+
+/* ===== Animations ===== */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes bounce-soft {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+.animate-bounce-soft {
+  animation: bounce-soft 2s ease-in-out infinite;
+}
+
+/* ===== Card Styles ===== */
+.card-dark {
+  background:
+    radial-gradient(120% 120% at 20% 10%, rgba(255, 255, 255, 0.07), transparent 60%),
+    linear-gradient(145deg, #1e1a2e, #252040);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 16px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.26);
+  transition: transform 0.20s ease, box-shadow 0.20s ease, border-color 0.20s ease;
+}
+
+.card-dark:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.30);
+}
+
+/* ===== Button Styles ===== */
+.btn-gradient {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.95), rgba(99, 102, 241, 0.95));
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+.btn-gradient:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+  box-shadow: 0 12px 26px rgba(99, 102, 241, 0.22);
+}
+
+/* ===== Badge Styles ===== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-easy {
+  background: rgba(74, 222, 128, 0.2);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.3);
+}
+
+.badge-medium {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.badge-hard {
+  background: rgba(248, 113, 113, 0.2);
+  color: #f87171;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.badge-level {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.95), rgba(99, 102, 241, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: white;
+}
+
+/* ===== Responsive Utilities ===== */
+@media (max-width: 767px) {
+  .card-dark:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .btn-gradient:hover {
+    transform: none;
+  }
+
+  .mission-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .badge {
+    padding: 4px 10px;
+    font-size: 10px;
+    gap: 4px;
+  }
+}
+
+/* ===== Touch-friendly buttons ===== */
+@media (hover: none) {
+  .card-dark:active {
+    transform: scale(0.98);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-gradient:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+}
+
+/* ===== Safe area for mobile notches ===== */
+@supports (padding-top: env(safe-area-inset-top)) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+/* Utility helpers (used in modules) */
+.safe-area-bottom {
+  padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+/* ===== Prevent text selection on interactive elements ===== */
+button,
+.card-dark {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+/* Animation keyframes */
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
+/* Smooth transitions for dark mode */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ===== App background + page transition ===== */
+.app-shell {
+  position: relative;
+  background: var(--bg-primary);
+}
+
+.app-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(900px 420px at 20% 10%, rgba(99, 102, 241, 0.16), transparent 60%),
+    radial-gradient(760px 380px at 80% 0%, rgba(168, 85, 247, 0.14), transparent 55%),
+    radial-gradient(760px 420px at 50% 95%, rgba(255, 107, 157, 0.10), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.app-shell > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-enter {
+  animation: page-enter 260ms ease-out both;
+}
+
+.animate-fade-up {
+  animation: page-enter 320ms ease-out both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 260ms ease-out both;
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scale-in 220ms ease-out both;
+}
